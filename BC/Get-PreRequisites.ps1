@@ -16,7 +16,7 @@ $activeModule = Get-Module navcontainerhelper
 $latestModule = Find-Module -Name navcontainerhelper -Repository PSGallery -ErrorAction Stop
 
 # Check if module is installed
-if ($installedModule -eq $null) {
+if ($null -eq $installedModule) {
     Write-Warning "NavContainerHelper module is not installed."
 
     #region Install module
@@ -37,7 +37,7 @@ elseif ($latestModule.Version -gt $installedModule.Version) {
 }
 
 # Check if module is loaded in current session
-if ($activeModule -eq $null) {
+if ($null -eq $activeModule) {
     Write-Warning "NavContainerHelper is not loaded on current session."
 
     #region Load module in current session
