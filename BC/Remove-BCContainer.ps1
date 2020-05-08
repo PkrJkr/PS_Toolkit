@@ -7,6 +7,11 @@ param (
 # Define certificate store on local host
 $certStorePath = "\LocalMachine\Root\"
 
+#region Check for pre-requisites
+Write-Host "`nChecking pre-requisites..." -ForegroundColor Cyan
+Invoke-Expression -Command $PSScriptRoot\Get-PreRequisites.ps1 -ErrorAction Stop
+#endregion
+
 #region Stop BC container
 Write-Host "`nStopping BC container ($containerName)..." -ForegroundColor Cyan
 Stop-BCContainer $containerName -ErrorAction Stop
