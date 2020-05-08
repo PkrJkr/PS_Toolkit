@@ -8,6 +8,9 @@ Param (
     [string] $buildNumber
 )
 function CreateBCContainer {
+    Write-Host "`nCreating your new BC container...`n" -ForegroundColor Cyan
+    
+    #region Call external NavContainerHelper script to create new BC container
     New-BCContainer `
         -useSSL `
         -accept_eula `
@@ -22,7 +25,8 @@ function CreateBCContainer {
         -memoryLimit "$memoryLimitG" `
         -imageName $imageName
         # -PublishPorts 80,443,1433,7045,7046,7047,7048,7049,8080 `
-        # -additionalParameters @('--network LAN', '--restart always') `
+        # -additionalParameters @('--network LAN', '--restart always')
+    #endregion
 }
 function InstallCertificate {
     # Target certificate store on local container host
@@ -52,11 +56,8 @@ Invoke-Expression "docker pull $imageName" -ErrorAction Stop
 Write-Host "BC container image downloaded (build # $buildNumber)." -ForegroundColor Green
 #endregion
 
-#region Create the new BC container
-Write-Host "`nCreating your new BC container...`n" -ForegroundColor Cyan
+#Create the new BC container
 CreateBCContainer
-#endregion
 
-#region Import new BC container self-signed certificate
+#Import new BC container self-signed certificate
 InstallCertificate
-#endregion
