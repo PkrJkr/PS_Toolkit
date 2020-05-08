@@ -13,10 +13,10 @@ Get-BCImageTags.ps1 <part_of_build_number>
 > Example: Get-BCImageTags.ps1 16.0
 
 ### Check for the latest NAV base image
-> Used to create containers in *process isolation* mode, instead of *Hyper-V isolation* mode.
 ```
 Get-NAVImageTags.ps1
 ```
+> Used to create containers in *process isolation* mode, instead of *Hyper-V isolation* mode.
 
 ### Check for pre-requisites
 ```
