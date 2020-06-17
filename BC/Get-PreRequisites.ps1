@@ -24,7 +24,7 @@ if ($null -eq $installedModule) {
     Write-Host "NavContainerHelper version $($latestModule.Version) was successfully installed." -ForegroundColor Green
 }
 elseif ($latestModule.Version -gt $installedModule.Version) {
-    Write-Warning "There's a newer version of NavContainerHelper module available $($latestModule.Version)."
+    Write-Warning "There's a new version of NavContainerHelper module available: v$($latestModule.Version)."
     
     Write-Host "Updating it now..." -ForegroundColor Cyan
     UpdateModule
